@@ -1,0 +1,27 @@
+version: "3"
+services:
+  api:
+    restart: "always"
+    build: ./api
+    depends_on:
+    - "postgres"
+    ports:
+      - "3000:3000"
+  auth:
+    restart: "always"
+    build: ./auth
+    depends_on:
+    - "postgres"
+    ports:
+      - "3001:3001"
+  postgres:
+    image: "postgres"
+    environment:
+      POSTGRES_PASSWORD: "mypass"
+      POSTGRES_USER: "nero"
+      POSTGRES_DB: "authdb"
+    volumes: 
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql
+      - ./db.sql:/docker-entrypoint-initdb.d/authdb.sql
+    ports:
+      - "5432:5432"
