@@ -1,19 +1,29 @@
 version: "3"
 services:
+  nginx:
+    build: ./nginx
+    ports:
+    - "3000:3000"
+    depends_on:
+      - api
+      - auth
   api:
     restart: "always"
     build: ./api
+    ports:
+      - "3001:3001"
     depends_on:
     - "postgres"
-    ports:
-      - "3000:3000"
+    - "auth"
+    links:
+    - "postgres"
   auth:
     restart: "always"
     build: ./auth
     depends_on:
     - "postgres"
     ports:
-      - "3001:3001"
+      - "3002:3002"
   postgres:
     image: "postgres"
     environment:
