@@ -1,0 +1,23 @@
+{
+    "appPort": 3002,
+    "dbConfigs":
+    {
+        "database": "",
+        "username": "",
+        "passport": "",
+        "host": "",
+        "port": 5432
+    },
+    "accessTokenSecretOrKey": "secretA",
+    "accessTokenOptions": {
+        "issuer": "",
+        "audience": "",
+        "expiresIn": "1d"
+    },
+    "refreshTokenSecretOrKey": "secretB",
+    "refreshTokenOptions": {
+        "issuer": "",
+        "audience": "",
+        "expiresIn": "1d"
+    }
+}
