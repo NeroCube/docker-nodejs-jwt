@@ -8,13 +8,13 @@
         "host": "",
         "port": 5432
     },
-    "accessTokenSecretOrKey": "secretA",
+    "accessTokenSecretOrKey": "accessTokenSecret",
     "accessTokenOptions": {
         "issuer": "",
         "audience": "",
         "expiresIn": "1d"
     },
-    "refreshTokenSecretOrKey": "secretB",
+    "refreshTokenSecretOrKey": "refreshTokenSecret",
     "refreshTokenOptions": {
         "issuer": "",
         "audience": "",
