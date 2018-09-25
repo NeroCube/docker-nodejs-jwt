@@ -9,7 +9,7 @@ var LocalStratey = require('passport-local').Strategy;
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var passportAuth = require('./passportAuth');
-
+var userDao = require('./dao/userDao');
 
 
 var JwtStrategy = require('passport-jwt').Strategy;
@@ -20,8 +20,8 @@ opts.secretOrKey = 'secret';
 opts.issuer = 'accounts.examplesoft.com';
 opts.audience = 'yoursite.net';
 
-passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-    User.findOne({id: jwt_payload.sub}, function(err, user) {
+passport.use(new JwtStrategy(envConfigs.accessTokenOptions, function(jwt_payload, done) {
+    userDao.findByUserId(jwt_payload.sub, function(err, user) {
         if (err) {
             return done(err, false);
         }
